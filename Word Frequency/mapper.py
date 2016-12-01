@@ -2,19 +2,25 @@
 
 import sys
 import re
+from nltk.corpus import stopwords
+
 
 
 for line in sys.stdin:
+	s=set(stopwords.words('english'))
 	line=line.strip()
 	if line == '':
 		continue
 	else:
-		x=line.split(" ")
+		x=line.split()
+
 		for word in x:
-			if word == '' or word == 'and' or word =='a' or word == 'an' or word == 'the' :
+			word = word.strip(".")
+			word = word.strip(",")
+			word = word.strip(";")
+			word = word.strip(":")
+			word = word.strip('"')
+			if word in s:
 				continue
 			else:	
-				m = word
-				word = word.strip(".")
-				word = word.strip(",")
 				print '%s %s' % (word,1)
