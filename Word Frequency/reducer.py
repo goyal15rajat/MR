@@ -27,5 +27,5 @@ for line in sys.stdin:
 		
 
 #for word in word_dict:
-for key,value in sorted(word_dict.items(),key = operator.itemgetter(1)):
+for key,value in sorted(word_dict.items(),key = operator.itemgetter(1),reverse=True):
 	print '%s\t%s' % (key,value)
